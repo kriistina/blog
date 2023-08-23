@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Clanak;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kategorija extends Model
 {
@@ -16,4 +17,5 @@ class Kategorija extends Model
     protected $fillable = [
         'naziv',
     ];
+
 }

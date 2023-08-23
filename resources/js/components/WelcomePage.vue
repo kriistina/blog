@@ -1,7 +1,5 @@
 <template>
-    <div class="container mt-8 ml-16">
-        <h1>Welcome page</h1>
-    </div>
+    <div class="container mt-8 ml-16"></div>
 </template>
 
 <script>

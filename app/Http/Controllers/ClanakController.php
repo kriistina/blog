@@ -9,9 +9,19 @@ use Intervention\Image\Facades\Image;
 
 class ClanakController extends Controller
 {
-    public function dodaj_clanak()
+
+    public function dohvatiClanke(){
+
+        $clanci = Clanak::with('kategorija', 'korisnik', 'komentari')->orderBy('created_at', 'DESC')->get();;
+    
+            return response()->json([
+                'clanci' => $clanci
+            ]);
+    }
+
+    public function dodajClanak()
     {
-        return view('dodaj_clanak');
+        return view('dodajClanak');
     }
 
     public function objaviClanak(Request $request)
@@ -34,4 +44,6 @@ class ClanakController extends Controller
         $clanak->slika = $slika;
         $clanak->save();
     }
+
+   
 }

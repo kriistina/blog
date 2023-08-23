@@ -9,13 +9,15 @@ Route::get('/', "GuestController@naslovnica")->name('naslovnica');
 
 Route::get('/destinacije', "GuestController@destinacije")->name('destinacije');
 
-Route::get('/about', "GuestController@about")->name('about');
+
 
 Route::get('/kontakt', "GuestController@kontakt")->name('kontakt');
 
 Route::get('/blog', "GuestController@blog")->name('blog');
 
 Route::get('/galerija', "GuestController@galerija")->name('galerija');
+
+Route::get('/clanak', "GuestController@clanak")->name('clanak');
 
 
 
@@ -27,8 +29,9 @@ Route::group(['middleware' => ['auth']], function () {
     
    
 
-    Route::get('/clanak/dodaj', "ClanakController@dodaj_clanak")->name('dodajClanak');
-    Route::post('/clanak/objavi', "ClanakController@objaviClanak")->name('objaviClanak');
+    Route::get('/clanak/dodaj', "ClanakController@dodajClanak")->name('dodajClanak');
+    Route::post('/clanak/objavi', "ClanakController@objaviClanak");
+    Route::post('/clanak/komentiraj/{id}', "KomentarController@napraviKomentar");
    
 });
 

@@ -1,11 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <title>Globus</title>
+
+
+</head>
+
+<body>
+  
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-4">
-                <div class="card-header blue white--text">{{ __('Prijava') }}</div>
+            <div class="card mt-4 shadow-lg bg-body-tertiary rounded mb-5">
+                <div class="card-header secondary white--text text-center fs-4">{{ __('Prijava') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -54,10 +71,10 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
 
-                                <v-btn color="primary" width="150px" type="submit">{{ __('Prijava') }}</v-btn>
+                                <v-btn color="secondary" width="150px" type="submit">{{ __('Prijava') }}</v-btn>
 
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link text--secondary"  href="{{ route('password.request') }}">
                                     {{ __('Zaboravili ste lozinku??') }}
                                 </a>
                                 @endif
@@ -69,4 +86,9 @@
         </div>
     </div>
 </div>
+
+</body>
+
+</html>
+
 @endsection

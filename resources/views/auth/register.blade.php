@@ -1,11 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <title>Globus</title>
+
+
+</head>
+
+<body>
+  
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-4">
-                <div class="card-header blue white--text">{{ __('Registracija') }}</div>
+            <div class="card mt-4 shadow-lg bg-body-tertiary rounded mb-5">
+                <div class="card-header secondary white--text text-center fs-4">{{ __('Registracija') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -63,7 +80,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <v-btn color="primary" width="150px" type="submit">
+                                <v-btn color="secondary" width="150px" type="submit">
                                     {{ __('Registriraj se') }}
                                 </v-btn>
                             </div>
@@ -74,4 +91,9 @@
         </div>
     </div>
 </div>
+
+</body>
+
+</html>
+
 @endsection

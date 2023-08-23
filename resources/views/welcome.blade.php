@@ -17,9 +17,9 @@
 </head>
 
 <body>
-  
-<naslovnica></naslovnica>
-
+  <div class="destinacije">
+    <naslovnica></naslovnica>
+  </div>
 </body>
 
 </html>

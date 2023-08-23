@@ -6,3 +6,41 @@
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+a.nav-link {
+    color: #b0bec5;
+    font-family: "Nunito";
+    font-weight: bold;
+}
+
+a.nav-link:hover {
+    color: #ff7043;
+}
+a.logo-name {
+    font-family: "Nunito";
+    font-size: 1.3rem;
+    color: white;
+}
+
+div.v-picker__title {
+    padding: 9px;
+}
+
+div.v-date-picker-title__year {
+    font-size: 19px;
+    margin-bottom: 0px;
+}
+
+.dodaj-clanak {
+    background-image: url("https://thumbs.dreamstime.com/b/ocean-beach-sunrise-colorful-75364306.jpg");
+    background-size: cover;
+}
+
+.destinacije {
+    background-image: url("https://i.pinimg.com/736x/a8/66/e0/a866e08571ae9b1271b99c31e6fc29ba.jpg");
+    background-size: cover;
+}
+.kontakt {
+    background-image: url("https://oceanexplorer.noaa.gov/facts/media/explored-hires.jpg");
+    background-size: cover;
+}

@@ -36,4 +36,9 @@ class GuestController extends Controller
     {
         return view('Guest.galerija');
     }
+
+    public function clanak()
+    {
+        return view('Guest.clanak');
+    }
 }

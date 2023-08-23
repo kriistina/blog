@@ -19,7 +19,9 @@
     <script src="{{ asset('frontend/js/bootstrap/plugins/plugins.js')}}"></script>
     <script src="{{ asset('frontend/js/active.js')}}"></script>    
     <!-- Fonts -->
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
 
 
     <!-- Template Fonts -->
@@ -38,6 +40,7 @@
  
    
     <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="icon" href="img/core-img/favicon.ico">
     <style>
         .logo-link {
@@ -52,68 +55,77 @@
     <div id="app">
         <v-app>
         <header class="header-area">
-    <div class="delicious-main-menu">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light classy-navbar justify-content-between" id="deliciousNav">
-                <a class="nav-brand logo-link" href="{{ url('/') }}"><img src="img/logo.png" alt=""></a>
-
-
-                <div class="collapse navbar-collapse classynav" id="navbarText">
-                   
-                   
-                    </div>
-                    <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('naslovnica') }}">NASLOVNICA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">BLOG</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('destinacije') }}">DESTINACIJE</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">O NAMA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('kontakt') }}">KONTAKT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('galerija') }}">GALERIJA</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('dodajClanak') }}">DODAJ CLANAK</a></li>
-                        
-                
-
-
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark">
+                <div class="container">
+                    <a class="navbar-brand logo-link" href="{{ url('/') }}">
+                        <img src="/img/logo.webp" width="200px">
+                        <span>
+                            <a class="logo-name" href="{{ url('/') }}">TRAVEL BLOG</a>
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('naslovnica') }}">NASLOVNICA</a>
                             </li>
-                        @endguest
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blog') }}">BLOG</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('destinacije') }}">DESTINACIJE</a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('kontakt') }}">KONTAKT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('galerija') }}">GALERIJA</a>
+                            </li>
+                            @if(Auth::check())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('dodajClanak') }}">DODAJ CLANAK</a>
+                                </li>
+                            @endif
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                @endif
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
                 </div>
             </nav>
-        </div>
+
+
     </header>
             <div>
                 @yield('content')
             </div>
+            <my-footer></my-footer>
         </v-app>
     </div>
 
